@@ -22,6 +22,8 @@ You can find a demo site <a href="https://amartin.codeberg.page">here</a>
 Add Elegante to your themes directory in any way you prefer (git submodules are the devil) and select
 it as your site theme.
 
+Once this is done, run `npm install` in `themes/elegante` to install the TailwindCSS dependency and that's it!
+
 ## Contribute
 
 1. Fork it (https://github.com/NTBBloodbath/elegante/fork)
