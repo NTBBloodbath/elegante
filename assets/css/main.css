@@ -1,0 +1,177 @@
+/* Tailwind and custom fonts */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Geist Sans";
+    src: url("/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/geist-mono/GeistMono-Variable.woff2") format("woff2");
+}
+
+:root {
+    --font-sans: "Geist Sans";
+    --font-mono: "Geist Mono";
+}
+
+/* Overall design */
+html {
+    @apply scroll-smooth tabular-nums font-sans;
+}
+
+body {
+    @apply antialiased font-medium text-justify bg-base text-text selection:bg-subtle selection:text-surface lg:text-lg xl:text-xl;
+}
+
+main a {
+    @apply underline;
+}
+
+a.icon {
+    @apply no-underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply font-bold text-xl;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+  counter-increment: h2;
+  counter-reset: h3;
+}
+
+h3 {
+  @apply text-2xl;
+  counter-increment: h3;
+  counter-reset: h4;
+}
+
+h4 {
+  @apply text-xl;
+  counter-increment: h4;
+}
+
+h6 {
+  @apply font-normal;
+}
+
+p {
+    @apply leading-relaxed py-2;
+}
+
+strong {
+    @apply font-semibold;
+}
+
+ul {
+    @apply p-5 list-disc;
+}
+
+ol {
+    @apply p-5 list-decimal;
+}
+
+ul,
+ol {
+  @apply space-y-1 leading-relaxed;
+}
+
+nav ul,
+nav ol {
+  @apply space-y-0 list-none;
+}
+
+main h2,
+main h3,
+main h4,
+main h5,
+main h6,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6 {
+    @apply mt-10;
+}
+
+blockquote {
+    @apply p-4 my-4 border-s-4 border-overlay bg-surface;
+}
+
+blockquote > p {
+    @apply leading-relaxed;
+}
+
+/* Code block */
+code {
+    /* Inline code style */
+    @apply rounded-lg p-1 text-sm md:text-md drop-shadow-lg font-mono;
+}
+
+code > pre {
+    @apply font-mono;
+}
+
+pre {
+    @apply overflow-auto p-4 my-5 rounded-lg drop-shadow-lg;
+}
+
+pre > code {
+    /* Disable inline code style */
+    @apply rounded-none p-0 bg-transparent;
+}
+
+/* Inline markdown code */
+p code,
+li code {
+    @apply overflow-auto p-1.5 rounded-lg drop-shadow bg-surface;
+}
+
+blockquote p code,
+blockquote li code {
+    @apply bg-overlay;
+}
+
+/* ToC */
+#toc-content {
+    @apply h-3/4 font-mono bg-surface border-2 border-overlay;
+}
+
+nav#TableOfContents ol {
+    @apply -mt-4 pl-4 list-decimal list-inside;
+}
+
+nav#TableOfContents ol li {
+    @apply mt-0 pb-0;
+}
+
+nav#TableOfContents ol li a {
+    @apply no-underline hover:text-foam;
+}
+
+nav#TableOfContents ol li::marker {
+    @apply hover:text-foam;
+}
+
+nav#TableOfContents ol li ol {
+    @apply pb-2;
+}

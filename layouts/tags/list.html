@@ -1,0 +1,31 @@
+{{ define "main" }}
+  {{ $currentPage := . }}
+  <h1 class="text-5xl text-center">{{ .Title }}</h1>
+  <div class="container">
+    {{ if eq $currentPage.Title "Tags" }}
+      {{ $attr := "no-underline hover:text-foam md:hover:text-foam" }}
+      <ul>
+        {{ range $.Site.Taxonomies.tags.Alphabetical }}
+          {{ if gt .Count 0 }}
+            <li class="mt-10 lg:mt-12 text-2xl">
+              <a class="{{ $attr }}" href="/tags/{{ .Name }}">{{ .Name }}</a>
+              <span class="text-sm md:text-md lg:text-lg text-muted tabular-nums">&nbsp;({{ .Count }} post{{ if gt .Count 1}}s{{ end }})</span>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    {{ else }}
+      {{ range .Pages }}
+        <h2 class="mt-10 lg:mt-12 text-2xl text-left">
+          <a class="no-underline" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </h2>
+        <span class="text-sm md:text-md lg:text-lg text-muted">{{ partial "date" .Date }}</span>
+        <span class="text-sm md:text-md lg:text-lg text-muted">&nbsp;|&nbsp;</span>
+        <span class="text-sm md:text-md lg:text-lg text-muted">Estimated reading time: {{ .ReadingTime }} minute(s)</span>
+        <div>
+          {{ .Summary }}
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

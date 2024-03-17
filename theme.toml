@@ -1,0 +1,13 @@
+name = 'elegante'
+license = 'GPL-3.0'
+licenselink = 'https://NTBBloodbath.com/NTBBloodbath/elegante/LICENSE'
+description = "An elegant and responsive blog theme, taken from my personal blog"
+homepage = 'https://github.com/NTBBloodbath/pages'
+demosite = 'https://amartin.codeberg.page'
+tags = ["Modern", "Elegant", "Responsive", "Clean", "Blog"]
+features = ["Responsive", "Dark Mode", "Syntax Highlighting", "Blog", "RSS"]
+min_version = "0.116.0"
+
+[author]
+  name = 'Alejandro Martin'
+  homepage = 'https://amartin.codeberg.page'

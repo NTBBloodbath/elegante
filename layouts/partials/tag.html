@@ -1,0 +1,14 @@
+{{/* Tag coloring on hover */}}
+{{ $attr := "no-underline text-surface bg-subtle rounded-lg px-2 py-1 text-sm md:text-md lg:text-lg md:hover:bg-foam md:dark:hover:bg-foam hover:bg-foam" }}
+
+{{ range $taxonomy, $_ := .Site.Taxonomies }}
+    {{ with $terms := $.GetTerms $taxonomy }}
+        <div class="text-sm md:text-md lg:text-lg">
+            <span>Tags:&nbsp;</span>
+            {{ range $n, $term := $terms}}
+                {{ if $n }}{{ end }}
+                <a class="{{ $attr }}" href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>&nbsp;
+            {{ end }}
+        </div>
+    {{ end }}
+{{ end }}

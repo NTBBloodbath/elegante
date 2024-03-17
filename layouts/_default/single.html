@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <h1 class="mx-2 lg:mx-4 text-2xl">{{ .Title }}</h1>
+  <div class="flex flex-row">
+    {{- partial "toc" . -}}
+    <div class="mx-2 lg:mx-4 flex-1">
+      <span>{{ partial "date" .Date }}</span>
+      <span class="hidden md:inline-flex text-sm md:text-md lg:text-lg text-muted">&nbsp;|&nbsp;</span>
+      <span class="hidden md:inline-flex text-sm md:text-md lg:text-lg text-muted">Estimated reading time: {{ .ReadingTime }} minute{{ if gt .ReadingTime 1 }}s{{ end }}</span>
+      <span class="hidden md:inline-flex text-sm md:text-md lg:text-lg text-muted">&nbsp;|&nbsp;</span>
+      {{- partial "views.html" . -}}
+    </div>
+    <div class="mx-2 lg:mx-4">
+      {{- partial "tag" . -}}
+    </div>
+  </div>
+
+  <div class="mx-2 lg:mx-4 mt-10 lg:mt-12 break-keep">
+    {{ .Content }}
+  </div>
+{{ end }}

@@ -1,0 +1,66 @@
+<script>
+function toggleNavMenu() {
+  let nav = document.getElementById("navbar-default");
+  nav.classList.toggle("hidden");
+  nav.classList.toggle("mt-2");
+  nav.classList.toggle("flex");
+  nav.classList.toggle("justify-center");
+  nav.classList.toggle("bg-surface");
+  nav.classList.toggle("rounded-lg");
+  nav.classList.toggle("drop-shadow-sm");
+  nav.classList.toggle("items-center");
+  nav.firstElementChild.classList.toggle("mt-4");
+}
+</script>
+
+<nav class="bg-base container min-w-full max-w-screen-xl flex flex-wrap items-center mx-auto justify-between px-6 py-4">
+    <div class="flex-none">
+        <a class="font-bold space-x-3 p-2 text-xl md:text-2xl" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        <i id="dark_mode_btn" class="text-lg md:text-xl hidden ti ti-moon-filled"></i>
+        <i id="light_mode_btn" class="text-lg md:text-xl hidden ti ti-sun"></i>
+    </div>
+    <button
+        data-collapse-toggle="navbar-default"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-surface focus:outline-none focus:ring-2"
+        aria-controls="navbar-default"
+        aria-expanded="false"
+        onclick="toggleNavMenu()"
+    >
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+    </button>
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <ul class="font-medium flex p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+            {{/* Get current page and set the CSS classes for the active and inactive nav links */}}
+            {{ $currentPage := . }}
+            {{ $activeAttr := "block py-2 px-3 rounded text-foam md:bg-transparent md:p-0" }}
+            {{ $inactiveAttr := "block py-2 px-3 rounded text-subtle hover:bg-surface md:hover:bg-transparent md:border-0 md:hover:text-foam md:p-0 md:dark:hover:bg-transparent" }}
+            {{ range .Site.Menus.main }}
+                <li>
+                    {{/*
+                        Highlight current page name OR
+                        Highlight posts if we are reading a post OR
+                        Highlight tags if we are looking at a tag posts
+                    */}}
+                    {{ if or (
+                        or (eq $currentPage.Title .Name) (and
+                            (eq .Name "Posts") (strings.Contains $currentPage.RelPermalink "posts")
+                        )
+                       ) (
+                        or (eq $currentPage.Title .Name) (and
+                            (eq .Name "Tags") (strings.Contains $currentPage.RelPermalink "tags")
+                        )
+                       )
+                    }}
+                        <a class="{{ $activeAttr }}" href="{{ .PageRef }}">{{ .Name }}</a>
+                    {{ else }}
+                        <a class="{{ $inactiveAttr }}" href="{{ .PageRef }}">{{ .Name }}</a>
+                    {{ end }}
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>

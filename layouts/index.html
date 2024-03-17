@@ -1,0 +1,37 @@
+{{ define "main" }}
+    <article class="container">
+        <div class="break-keep">
+        {{ .Content }}
+        </div>
+        <h2 class="text-2xl lg:text-3xl">Most recent posts</h2>
+        <div class>
+            {{/* Display the 3 most recent posts */}}
+            {{ $postsCount := 0 }}
+            {{ $postDivAttrs := "mt-8 lg:mt-10 py-4 px-6 bg-surface rounded-lg drop-shadow-sm" }}
+            {{ $postTitleAttrs := "mt-2 text-xl lg:text-2xl text-left" }}
+            {{ range (first 3 (where .Site.Pages "Type" "post").ByDate.Reverse) }}
+                {{ $postsCount = add $postsCount 1 }}
+                {{ if gt $postsCount 1 }}
+                    {{ $postTitleAttrs = "mt-2 text-xl lg:text-2xl text-left" }}
+                {{ end }}
+                <div class="{{ $postDivAttrs }}">
+                    <h3 class="{{ $postTitleAttrs }}">
+                        <a class="no-underline" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                    </h3>
+                    <span class="text-sm md:text-md lg:text-lg text-muted">{{ partial "date" .Date }}</span>
+                    <span class="text-sm md:text-md lg:text-lg text-muted">&nbsp;|&nbsp;</span>
+                    <span class="text-sm md:text-md lg:text-lg text-muted">Estimated reading time: {{ .ReadingTime }} minute{{ if gt .ReadingTime 1 }}s{{ end }}</span>
+                    <div class="text-sm md:text-md lg:text-lg text-muted italic">
+                        {{ .Description }}
+                    </div>
+                    <div class="mt-4">
+                        {{ .Summary }}
+                        {{ if .Truncated }}
+                            <p><a class="text-muted no-underline" href="{{ .RelPermalink }}">Read more ...</a></p>
+                        {{ end }}
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </article>
+{{ end }}

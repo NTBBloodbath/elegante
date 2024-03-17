@@ -1,0 +1,28 @@
+<script>
+function toggleToC() {
+    let toc = document.getElementById("toc-content");
+    toc.classList.toggle("hidden");
+    toc.classList.toggle("fixed");
+}
+</script>
+
+<div id="toc">
+    {{ if default true (default .Site.Params.toc .Params.toc) }}
+        {{ if gt (.TableOfContents | countwords) 0 }}
+            <div>
+                <button
+                    type="button"
+                    class="fixed -ml-12 mt-7 md:mt-8 lg:mt-9 xl:mt-10 inline-flex items-center justify-end pr-0 z-40 w-10 h-10 text-xl rounded-lg drop-shadow-lg border-2 border-overlay bg-surface hover:bg-foam hover:text-surface"
+                    onclick="toggleToC()">
+                    <i class="ti ti-arrow-badge-right-filled"></i>
+                </button>
+                <div id="toc-content" class="hidden overflow-auto mb-auto z-40 items-center w-3/4 md:w-auto md:h-auto rounded-lg drop-shadow-lg text-subtle">
+                    <summary class="font-semibold text-text pt-4 pl-4 pr-4">Table of contents</summary>
+                    <div id="toc-list" class="text-left text-sm md:text-md">
+                        {{ .TableOfContents }}
+                    </div>
+                </div>
+            </div>
+        {{ end }}
+    {{ end }}
+</div>

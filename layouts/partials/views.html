@@ -1,0 +1,15 @@
+<span
+ id="{{ .File.UniqueID }}"
+ title="Views"
+ class="hidden md:inline-flex text-sm md:text-md lg:text-lg text-muted">
+</span>
+
+<script>
+var r = new XMLHttpRequest();
+r.addEventListener("load", function() {
+    document.getElementById("{{ .File.UniqueID }}").innerText = "Views: " + JSON.parse(this.responseText).count_unique
+})
+
+r.open("GET", "https://amartin-blog.goatcounter.com/counter/" + encodeURIComponent({{ .RelPermalink }}.replace(/(\/)?$/, "")) + ".json")
+r.send()
+</script>

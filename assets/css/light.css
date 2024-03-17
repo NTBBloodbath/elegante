@@ -1,0 +1,21 @@
+/* Minified rose pine chroma */
+.bg,.chroma{color:#575279;background-color:#faf4ed}.chroma .err,.chroma .gd{color:#b4637a}.chroma .lnlinks{outline:0;text-decoration:none;color:inherit}.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0}.chroma .hl{background-color:#e1dbd5}.chroma .ln,.chroma .lnt{white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .line{display:flex}.chroma .k,.chroma .kc,.chroma .kd,.chroma .kp,.chroma .kr,.chroma .kt,.chroma .ne,.chroma .se{color:#286983}.chroma .gu,.chroma .kn{color:#907aa9}.chroma .bp,.chroma .fm,.chroma .n,.chroma .na,.chroma .nb,.chroma .nf,.chroma .ni,.chroma .nl,.chroma .nn,.chroma .nt,.chroma .nv,.chroma .py,.chroma .vc,.chroma .vg,.chroma .vi,.chroma .vm{color:#d7827e}.chroma .gi,.chroma .nc{color:#56949f}.chroma .dl,.chroma .il,.chroma .l,.chroma .ld,.chroma .m,.chroma .mb,.chroma .mf,.chroma .mh,.chroma .mi,.chroma .mo,.chroma .no,.chroma .s,.chroma .s1,.chroma .s2,.chroma .sa,.chroma .sb,.chroma .sc,.chroma .sd,.chroma .sh,.chroma .si,.chroma .sr,.chroma .ss,.chroma .sx{color:#ea9d34}.chroma .nd,.chroma .o,.chroma .ow,.chroma .p{color:#797593}.chroma .c,.chroma .c1,.chroma .ch,.chroma .cm,.chroma .cp,.chroma .cpf,.chroma .cs{color:#9893a5}.chroma .ge{font-style:italic}.chroma .gs{font-weight:700}
+
+/* Main theme */
+:root {
+  --base: var(--rp-dawn-base);
+  --surface: var(--rp-dawn-surface);
+  --overlay: var(--rp-dawn-overlay);
+  --muted: var(--rp-dawn-muted);
+  --subtle: var(--rp-dawn-subtle);
+  --text: var(--rp-dawn-text);
+  --highlight-low: var(--rp-dawn-hightlight-low);
+  --highlight-med: var(--rp-dawn-hightlight-med);
+  --highlight-high: var(--rp-dawn-hightlight-high);
+  --love: var(--rp-dawn-love);
+  --gold: var(--rp-dawn-gold);
+  --rose: var(--rp-dawn-rose);
+  --pine: var(--rp-dawn-pine);
+  --foam: var(--rp-dawn-foam);
+  --iris: var(--rp-dawn-iris);
+}
